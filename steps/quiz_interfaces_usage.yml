@@ -1,0 +1,60 @@
+id: quiz_interfaces_usage
+learningObjectives:
+  - Test knowledge on the use of interfaces in TypeScript.
+hints:
+  - Remember, interfaces act like a blueprint.
+  - Consider how interfaces enforce object structure.
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Time for another quiz!
+          - text: This one will challenge your understanding of TypeScript interfaces!
+          - text: How do interfaces help us in TypeScript?
+    - actionId: quiz_message
+      name: quiz
+      params:
+        person: lucca
+        options:
+          - By ensuring consistent object structure.
+          - By speeding up TypeScript compilation.
+          - By adding runtime checks to TypeScript.
+trigger:
+  type: chat_form_submitted
+  flowNode:
+    switch:
+      key: ${formSubmission}
+      cases:
+        A:
+          do:
+            - actionId: bot_message
+              params:
+                person: lucca
+                messages:
+                  - text: Correct! Interfaces allow objects to adhere to specified structures,
+                      ensuring consistency and preventing errors.
+            - actionId: finish_step
+        B:
+          do:
+            - actionId: bot_message
+              params:
+                person: lucca
+                messages:
+                  - text: Not quite. Interfaces don't specifically speed up compilation, but they
+                      provide structure and typing to objects. Try again.
+            - actionId: replay_action
+              params:
+                actionName: quiz
+        C:
+          do:
+            - actionId: bot_message
+              params:
+                person: lucca
+                messages:
+                  - text: Oh no, that's not right. Interfaces don't add runtime checks; they provide
+                      type safety during development. Have another go!
+            - actionId: replay_action
+              params:
+                actionName: quiz
