@@ -1,0 +1,107 @@
+id: end_of_quest
+learningObjectives:
+  - Reflect on what you've learned and how you'll apply TypeScript in your
+    projects.
+hints:
+  - Consider how static typing might help on future projects.
+  - Think about how interfaces and advanced types can reduce bugs.
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Bravo! You've reached the final step of our TypeScript adventure.
+          - text: How will what you've learned about TypeScript impact your future coding
+              projects?
+          - text: I believe you're more than ready to apply this knowledge to improve your
+              code quality.
+          - text: Feel free to share any parting thoughts or what you found most intriguing!
+trigger:
+  type: user_message
+  params:
+    person: lucca
+  flowNode:
+    do:
+      - actionId: parse_user_response
+        name: user_answer
+        params:
+          prompt: "
+
+            \    Please evaluate the user's answer in relation to
+            the expected answer: Users should reflect on how TypeScript can
+            improve their code robustness, maintainability, and prevent bugs
+            through static type checking, interfaces, and advanced type usage..
+
+            \    # Assessment Criteria
+
+            \    - Determine if the user's response demonstrates a
+            clear understanding of the key concepts and ideas presented in the
+            expected answer.
+
+            \    - Consider synonyms, paraphrasing, and different
+            phrasing that convey the same meaning.
+
+            \    - Be flexible and focus on the essence of the
+            answer rather than exact wording.
+
+            \ \ 
+
+            \    # Response Guidelines:
+
+            \    - If the user's answer is correct or shows
+            sufficient understanding, return 'correct: true'.
+
+            \      - Provide a positive and affirming message,
+            congratulating them and reinforcing their understanding.
+
+            \    - If the user's answer is incorrect or incomplete,
+            return 'correct: false'.
+
+            \      - Gently explain why the answer is not fully
+            correct or what may be missing.
+
+            \      - Encourage them to try again, being empathetic
+            and supportive.
+
+            \ \ 
+
+            \    # Tone and Style:
+
+            \    - Use friendly and encouraging language.
+
+            \    - Be empathetic to the user's learning process.
+
+            \    - Focus on helping the user learn and understand
+            the material.
+
+            \  "
+          schema:
+            correct: boolean
+            reply: string
+    if:
+      conditions:
+        - conditionId: is_truthy
+          params:
+            value: ${outputs.user_answer.value.correct}
+      then:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: ${outputs.user_answer.value.reply}
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: Congratulations, you've completed the quest! Go forth and conquer the
+                    TypeScript world!
+          - actionId: finish_step
+      else:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: ${outputs.user_answer.value.reply}
