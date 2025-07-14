@@ -1,0 +1,33 @@
+id: basic_types
+learningObjectives:
+  - Understand basic types and their syntax in TypeScript.
+hints:
+  - The TypeScript Handbook is your friend
+    [here](https://www.typescriptlang.org/docs/handbook/basic-types.html).
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: TypeScript is like a fussy chef, demanding precision with types.
+          - text: "Let's start with basic types: string, number, and boolean."
+          - text: "In TypeScript, you declare a type by appending a colon and the type, like
+              `let hero: string = 'Batman';`."
+          - text: Got the hang of it? Trust me, clarity in types is a game-changer for code
+              quality.
+          - text: Ready for the next bite-sized lesson on interfaces? Grab a coffee and
+              let's go!
+    - actionId: ready_message
+      params:
+        person: lucca
+trigger:
+  type: user_ready_response
+  flowNode:
+    do:
+      - actionId: bot_message
+        params:
+          person: lucca
+          messages:
+            - text: When you're ready, let's explore interfaces!
+      - actionId: finish_step
