@@ -1,0 +1,35 @@
+id: interfaces_intro
+learningObjectives:
+  - Learn the concept of interfaces and how they're used in TypeScript.
+hints:
+  - Learn more about interfaces
+    [here](https://www.typescriptlang.org/docs/handbook/interfaces.html).
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Alright! Onwards to the intriguing world of TypeScript interfaces!
+          - text: Interfaces in TypeScript are like a contract for how an object should
+              look.
+          - text: They define the syntax and enforce typing for our objects, providing a
+              sturdy blueprint.
+          - text: "Here's an example: `interface Hero { name: string; power: string; }`.
+              Pretty neat, right?"
+          - text: Now you can extend interfaces - like remixing a hit song! Optimize your
+              project further with interfaces.
+          - text: Interfaces can help manage complex designs with ease.
+    - actionId: ready_message
+      params:
+        person: lucca
+trigger:
+  type: user_ready_response
+  flowNode:
+    do:
+      - actionId: bot_message
+        params:
+          person: lucca
+          messages:
+            - text: Now that you've learned about interfaces, let's test your knowledge!
+      - actionId: finish_step
