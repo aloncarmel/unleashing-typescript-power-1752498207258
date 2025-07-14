@@ -1,0 +1,35 @@
+id: adv_types
+learningObjectives:
+  - Understand advanced types in TypeScript and how they enhance code usability.
+hints:
+  - Check out this guide on [Advanced
+    Types](https://www.typescriptlang.org/docs/handbook/advanced-types.html).
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Alright, hold on to your hats, it's time for advanced types in TypeScript!
+          - text: Advanced types can make us feel like code sorcerers. They're powerful and
+              versatile.
+          - text: These types include union types, intersection types, and type guards,
+              among others.
+          - text: Imagine safely combining types using intersection or allowing a variable
+              to hold different types with union types.
+          - text: This enhances the management of complex code structures. Manage complexity
+              without breaking a sweat!
+    - actionId: ready_message
+      params:
+        person: lucca
+trigger:
+  type: user_ready_response
+  flowNode:
+    do:
+      - actionId: bot_message
+        params:
+          person: lucca
+          messages:
+            - text: Once you've wrapped your head around advanced types, we're nearly at the
+                end of our quest!
+      - actionId: finish_step
