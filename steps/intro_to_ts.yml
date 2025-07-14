@@ -1,0 +1,32 @@
+id: intro_to_ts
+learningObjectives:
+  - Understand what TypeScript is and why it's used.
+hints:
+  - Read the TypeScript documentation
+    [here](https://www.typescriptlang.org/docs/).
+  - Check out an intro video on TypeScript
+    [here](https://www.youtube.com/watch?v=gp5H0Vw39yw).
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Welcome, brave developer, to the thrilling world of TypeScript!
+          - text: You might be wondering, why TypeScript? Well, it's a superset of
+              JavaScript that adds static typing.
+          - text: Static typing is like a safety helmet for your code, catching errors
+              before they ruin your day.
+          - text: TypeScript can help prevent common bugs, make your codebase easier to
+              navigate, and improve team collaboration.
+          - text: To get started, you just need a TypeScript compiler which can be installed
+              via npm. Easy peasy!
+          - text: Ready to unlock the power of TypeScript? Let's dive in!
+    - actionId: ready_message
+      params:
+        person: lucca
+trigger:
+  type: user_ready_response
+  flowNode:
+    do:
+      - actionId: finish_step
