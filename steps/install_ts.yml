@@ -1,0 +1,32 @@
+id: install_ts
+learningObjectives:
+  - Learn how to install TypeScript and set up a basic project.
+hints:
+  - The TypeScript Handbook has a section on [starting a
+    project](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html).
+  - Need a refresher on npm? Check this
+    [tutorial](https://docs.npmjs.com/cli/v7/commands/npm-install).
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Let's kick things off by installing TypeScript. It's as easy as pie.
+          - text: Open your terminal, then type `npm install -g typescript`. Easy, right?
+          - text: Now, let's create a basic TypeScript project. Just like JavaScript, but
+              cooler!
+          - text: Use `tsc --init` to generate a basic tsconfig.json file, which is your
+              TypeScript project configuration.
+          - text: The tsconfig.json file allows you to customize your TypeScript settings.
+              Get familiar with this file!
+          - text: Once you've done that, you're ready to start converting a JavaScript file
+              into TypeScript.
+    - actionId: ready_message
+      params:
+        person: lucca
+trigger:
+  type: user_ready_response
+  flowNode:
+    do:
+      - actionId: finish_step
